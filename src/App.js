@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import EmployeeForm from './EmployeeForm.js'; 
+import EmployeeForm from './EmployeeForm'; 
+
 
 function App() {
   return (
