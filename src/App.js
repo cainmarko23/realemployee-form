@@ -15,9 +15,10 @@ class App extends Component {
       date: "",
       userEmail: "",
       userPass: "",
-      isUser: false,
+      isUser: false
     };
     this.addEmployee = this.addEmployee.bind(this);
+    this.saveData = this.saveData.bind(this);
     this.cancel = this.cancel.bind(this);
     this.updateTodo = this.updateTodo.bind(this);
   }
@@ -31,13 +32,13 @@ class App extends Component {
 
     if (userEmail === Const_Email && userPass === Const_Pass) {
       this.setState({ isUser: true });
-      swal("Hurray!", "You are logged in successfully", "success");
+      swal("Hurray!", "You are logged in succesfully", "success");
     } else swal("Error", "Please enter correct credentials", "error");
   }
 
   logout() {
     this.setState({ isUser: false });
-    swal("Info!", "You are logged out successfully", "info");
+    swal("Info!", "You are logged out succesfully", "info");
   }
 
   addEmployee() {
@@ -48,9 +49,8 @@ class App extends Component {
       lName,
       email,
       salary,
-      date,
+      date
     };
-
     employees.push(employeeObj);
     this.saveData(); // Save to local storage
     this.setState({
@@ -59,8 +59,9 @@ class App extends Component {
       lName: "",
       email: "",
       salary: "",
-      date: "",
+      date: ""
     });
+    console.log(this.state.employees);
   }
 
   updateTodo() {
@@ -71,17 +72,15 @@ class App extends Component {
       lName,
       email,
       salary,
-      date,
+      date
     } = this.state;
-
     let updatedObj = {
       fName,
       lName,
       email,
       salary,
-      date,
+      date
     };
-
     employees[currentIndex] = updatedObj;
     this.saveData(); // Save to local storage
     this.setState({
@@ -90,7 +89,7 @@ class App extends Component {
       lName: "",
       email: "",
       salary: "",
-      date: "",
+      date: ""
     });
   }
 
@@ -103,7 +102,7 @@ class App extends Component {
       lName: employees[index].lName,
       email: employees[index].email,
       salary: employees[index].salary,
-      date: employees[index].date,
+      date: employees[index].date
     });
   }
 
@@ -121,7 +120,7 @@ class App extends Component {
       lName: "",
       email: "",
       salary: "",
-      date: "",
+      date: ""
     });
   }
 
@@ -135,6 +134,11 @@ class App extends Component {
   loadData() {
     const storedData = localStorage.getItem("employees");
     return storedData ? JSON.parse(storedData) : [];
+  }
+
+  componentDidMount() {
+    const employees = this.loadData();
+    this.setState({ employees });
   }
 
   /* Body functions */
@@ -183,43 +187,4 @@ class App extends Component {
         tabIndex="-1"
         role="dialog"
         aria-labelledby="registermodalLabel"
-        aria-hidden="true"
-      >
-        {/* ... (rest of your modal code) */}
-      </div>
-    );
-  }
-
-  renderAuthModal() {
-    return (
-      <div
-        className="modal fade"
-        id="signinmodal"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="signinmodalLabel"
-        aria-hidden="true"
-      >
-        {/* ... (rest of your modal code) */}
-      </div>
-    );
-  }
-
-  renderHeader() {
-    // ... (rest of your header code)
-  }
-
-  renderBody() {
-    // ... (rest of your body code)
-  }
-
-  renderFooter() {
-    // ... (rest of your footer code)
-  }
-
-  render() {
-    // ... (rest of your render code)
-  }
-}
-
-export default App;
+        aria
