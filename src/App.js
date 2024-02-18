@@ -62,7 +62,7 @@ class App extends Component {
     });
     console.log(this.state.employees);
   }
-  
+
   updateTodo() {
     const {
       currentIndex,
@@ -163,7 +163,6 @@ class App extends Component {
     // Save the employees array to local storage
     localStorage.setItem("employees", JSON.stringify(employees));
   }
-
   renderAddModal() {
     return (
       <div
@@ -203,7 +202,7 @@ class App extends Component {
                 type="text"
                 required="required"
                 className="form-control"
-                placeholder="Ali"
+                placeholder="John"
                 onChange={e => {
                   this.setState({ fName: e.target.value });
                 }}
@@ -214,7 +213,7 @@ class App extends Component {
               </label>
               <input
                 type="text"
-                placeholder="Khan"
+                placeholder="Doe"
                 className="form-control"
                 onChange={e => {
                   this.setState({ lName: e.target.value });
